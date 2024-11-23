@@ -3,6 +3,7 @@
 #include <valarray>
 #include <vector>
 #include "state.h"
+#include "quadtree.h"
 // #include "genBST.h"
 
 int main() {
@@ -13,6 +14,8 @@ int main() {
         statesTXT.close();
         return 1;
     }
+
+    quadtree *tree = nullptr;
 
     //read in each line separately
     std::string line;
@@ -56,8 +59,14 @@ int main() {
 
         state cs(&state_name, longitude, latitude);
 
-        std::cout << cs << std::endl;
+        if (tree == nullptr) {
+            tree = new quadtree(&cs);
+        } else {
+            tree->insert(&cs);
+        }
     }
+
+    statesTXT.close();
 }
 
 float geo_to_mile(
@@ -66,13 +75,18 @@ float geo_to_mile(
     const float lat2,
     const float longe2
 ) {
+    const float lat1_rad = lat1 * M_PIf / 180.0f;
+    const float longe1_rad = longe1 * M_PIf / 180.0f;
+    const float lat2_rad = lat2 * M_PIf / 180.0f;
+    const float longe2_rad = longe2 * M_PIf / 180.0f;
+
     return (
         3956.0f * std::acos(
-            (std::sin(lat1) * std::sin(lat2)) +
+            (std::sin(lat1_rad) * std::sin(lat2_rad)) +
             (
-                std::cos(lat1) *
-                std::cos(lat2) *
-                std::cos(longe2 - longe1)
+                std::cos(lat1_rad) *
+                std::cos(lat2_rad) *
+                std::cos(longe2_rad - longe1_rad)
             )
         )
     );
