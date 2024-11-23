@@ -1,5 +1,6 @@
 #include <fstream>
 #include <iostream>
+#include <valarray>
 #include <vector>
 #include "state.h"
 // #include "genBST.h"
@@ -57,5 +58,23 @@ int main() {
 
         std::cout << cs << std::endl;
     }
+}
+
+float geo_to_mile(
+    const float lat1,
+    const float longe1,
+    const float lat2,
+    const float longe2
+) {
+    return (
+        3956.0f * std::acos(
+            (std::sin(lat1) * std::sin(lat2)) +
+            (
+                std::cos(lat1) *
+                std::cos(lat2) *
+                std::cos(longe2 - longe1)
+            )
+        )
+    );
 }
 
