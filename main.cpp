@@ -6,6 +6,15 @@
 #include "quadtree.h"
 // #include "genBST.h"
 
+float geo_to_mile(
+    float lat1,
+    float longe1,
+    float lat2,
+    float longe2
+);
+
+void option2();
+
 int main() {
     //open file
     std::ifstream statesTXT("states.txt");
@@ -69,6 +78,67 @@ int main() {
     }
 
     statesTXT.close();
+
+    std::string menu_msg = "Please select an option to continue:\n"
+            "1. Quit\n"
+            "2. Compute distance between two coordinate points\n";
+
+    std::cout << menu_msg;
+
+    for (std::string input; std::cin >> input;) {
+        if (input.size() != 1) {
+            std::cout << "Invalid input `" << input << "`.\n" << menu_msg;
+            continue;
+        }
+
+        switch (input[0]) {
+            case '1':
+                std::cout << "Exiting..." << std::endl;
+                return 0;
+            case '2':
+                option2();
+                break;
+
+            default:
+                std::cout << "Invalid input `" << input << "`.\n" << menu_msg;
+        }
+
+        std::cout << menu_msg;
+    }
+}
+
+void option2() {
+    //read in values to compute
+    std::cout << "Latitude 1: ";
+    std::string lat1_str;
+    std::cin >> lat1_str;
+    std::cout << "Longitude 1: ";
+    std::string long1_str;
+    std::cin >> long1_str;
+    std::cout << "Latitude 2: ";
+    std::string lat2_str;
+    std::cin >> lat2_str;
+    std::cout << "Longitude 2: ";
+    std::string long2_str;
+    std::cin >> long2_str;
+
+    //convert to numbers now, to include in output for debug
+    const float lat1 = std::stof(lat1_str);
+    const float longe1 = std::stof(lat1_str);
+    const float lat2 = std::stof(lat2_str);
+    const float longe2 = std::stof(lat2_str);
+
+    std::cout << "The distance between ("
+            << lat1
+            << ","
+            << longe1
+            << ")  and ("
+            << lat2
+            << ","
+            << longe2
+            << ") is "
+            << geo_to_mile(lat1, longe1, lat2, longe2)
+            << " miles.\n";
 }
 
 float geo_to_mile(
