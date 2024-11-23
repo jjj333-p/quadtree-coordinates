@@ -59,11 +59,11 @@ int main() {
 
         if (tree == nullptr) {
             tree = new quadtree(
-                new state(&state_name, longitude, latitude)
+                new state(&state_name, latitude, longitude)
             );
         } else {
             tree->insert(
-                new state(&state_name, longitude, latitude)
+                new state(&state_name, latitude, longitude)
             );
         }
     }
