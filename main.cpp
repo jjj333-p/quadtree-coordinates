@@ -57,12 +57,14 @@ int main() {
             state_name += word_of_city + " ";
         }
 
-        state cs(&state_name, longitude, latitude);
-
         if (tree == nullptr) {
-            tree = new quadtree(&cs);
+            tree = new quadtree(
+                new state(&state_name, longitude, latitude)
+            );
         } else {
-            tree->insert(&cs);
+            tree->insert(
+                new state(&state_name, longitude, latitude)
+            );
         }
     }
 
