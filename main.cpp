@@ -81,7 +81,8 @@ int main() {
 
     std::string menu_msg = "Please select an option to continue:\n"
             "1. Quit\n"
-            "2. Compute distance between two coordinate points\n";
+            "2. Compute distance between two coordinate points\n"
+            "> ";
 
     std::cout << menu_msg;
 
@@ -100,7 +101,7 @@ int main() {
                 break;
 
             default:
-                std::cout << "Invalid input `" << input << "`.\n" << menu_msg;
+                std::cout << "Invalid input `" << input << "`.\n";
         }
 
         std::cout << menu_msg;
@@ -113,20 +114,20 @@ void option2() {
     std::string lat1_str;
     std::cin >> lat1_str;
     std::cout << "Longitude 1: ";
-    std::string long1_str;
-    std::cin >> long1_str;
+    std::string longe1_str;
+    std::cin >> longe1_str;
     std::cout << "Latitude 2: ";
     std::string lat2_str;
     std::cin >> lat2_str;
     std::cout << "Longitude 2: ";
-    std::string long2_str;
-    std::cin >> long2_str;
+    std::string longe2_str;
+    std::cin >> longe2_str;
 
     //convert to numbers now, to include in output for debug
     const float lat1 = std::stof(lat1_str);
-    const float longe1 = std::stof(lat1_str);
+    const float longe1 = std::stof(longe1_str);
     const float lat2 = std::stof(lat2_str);
-    const float longe2 = std::stof(lat2_str);
+    const float longe2 = std::stof(longe2_str);
 
     std::cout << "The distance between ("
             << lat1
