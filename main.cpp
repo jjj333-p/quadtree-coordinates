@@ -189,7 +189,7 @@ void option3(quadtree *tree) {
     //print number conversion to make sure string is parsed right + responsiveness
     const float lat = std::stof(lat_str);
     const float longe = std::stof(longe_str);
-    std::cout << "Finding the closest city to (" << lat << longe << ")...\n";
+    std::cout << "The closest city to (" << lat << longe << ") is... ";
 
     //as soon as we are looking at nodes further away, we can stop checking
     float closest_distance = geo_to_mile(
@@ -537,6 +537,15 @@ void option3(quadtree *tree) {
             }
         }
     }
+
+    std::cout << closest_node->this_el->name
+            << ", at ("
+            << closest_node->this_el->latitude
+            << ", "
+            << closest_node->this_el->longitude
+            << ") ("
+            << closest_distance
+            << " miles away).\n";
 }
 
 void option4() {
