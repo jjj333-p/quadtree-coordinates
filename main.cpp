@@ -15,7 +15,7 @@ float geo_to_mile(
 
 void option2();
 
-void option3();
+void option3(quadtree *tree);
 
 void option4();
 
@@ -106,7 +106,7 @@ int main() {
                 option2();
                 break;
             case '3':
-                option3();
+                option3(tree);
                 break;
             case '4':
                 option4();
@@ -179,6 +179,8 @@ void option2() {
 }
 
 void option3(quadtree *tree) {
+    assert(tree);
+
     std::cout << "Latitude: ";
     std::string lat_str;
     std::cin >> lat_str;

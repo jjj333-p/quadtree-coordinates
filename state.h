@@ -10,7 +10,7 @@
 
 class state {
 public:
-    //unique identifier
+    //unique identifiers
     float latitude;
     float longitude;
 
