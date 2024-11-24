@@ -108,6 +108,29 @@ int main() {
     }
 }
 
+float geo_to_mile(
+    const float lat1,
+    const float longe1,
+    const float lat2,
+    const float longe2
+) {
+    const float lat1_rad = lat1 * M_PIf / 180.0f;
+    const float longe1_rad = longe1 * M_PIf / 180.0f;
+    const float lat2_rad = lat2 * M_PIf / 180.0f;
+    const float longe2_rad = longe2 * M_PIf / 180.0f;
+
+    return (
+        3956.0f * std::acos(
+            (std::sin(lat1_rad) * std::sin(lat2_rad)) +
+            (
+                std::cos(lat1_rad) *
+                std::cos(lat2_rad) *
+                std::cos(longe2_rad - longe1_rad)
+            )
+        )
+    );
+}
+
 void option2() {
     //read in values to compute
     std::cout << "Latitude 1: ";
@@ -142,26 +165,4 @@ void option2() {
             << " miles.\n";
 }
 
-float geo_to_mile(
-    const float lat1,
-    const float longe1,
-    const float lat2,
-    const float longe2
-) {
-    const float lat1_rad = lat1 * M_PIf / 180.0f;
-    const float longe1_rad = longe1 * M_PIf / 180.0f;
-    const float lat2_rad = lat2 * M_PIf / 180.0f;
-    const float longe2_rad = longe2 * M_PIf / 180.0f;
-
-    return (
-        3956.0f * std::acos(
-            (std::sin(lat1_rad) * std::sin(lat2_rad)) +
-            (
-                std::cos(lat1_rad) *
-                std::cos(lat2_rad) *
-                std::cos(longe2_rad - longe1_rad)
-            )
-        )
-    );
-}
 
