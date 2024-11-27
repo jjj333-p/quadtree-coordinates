@@ -214,12 +214,24 @@ void option3(quadtree *tree) {
         const float curr_distance = geo_to_mile(lat, longe, city_subtree->this_el->latitude,
                                                 city_subtree->this_el->longitude);
 
-        //if at a better distance or on the first item
-        if (curr_distance < best_distance || city_subtree == tree) {
-            //update bests
+        float parent_distance = 0.0f;
+
+        if (city_subtree->predecessor) {
+            parent_distance = geo_to_mile(
+                lat, longe,
+                city_subtree->predecessor->this_el->latitude,
+                city_subtree->predecessor->this_el->longitude
+            );
+        }
+
+        //update bests
+        if (curr_distance < best_distance) {
             best_city = city_subtree->this_el;
             best_distance = curr_distance;
+        }
 
+        //if at a better distance or on the first item
+        if (curr_distance <= parent_distance || city_subtree == tree) {
             //check all elements if we're moving in the right direction
             if (city_subtree->nw)
                 city_queue.push(city_subtree->nw);
@@ -234,19 +246,54 @@ void option3(quadtree *tree) {
             continue;
         }
 
+        // //if nw exists, and we need to go north or west
+        // if (city_subtree->nw && (
+        //         city_subtree->this_el->latitude <= lat ||
+        //         city_subtree->this_el->longitude >= longe
+        //     )
+        // ) {
+        //     city_queue.push(city_subtree->nw);
+        // }
+        //
+        // //if ne exists, and we need to go north or east
+        // if (city_subtree->ne && (
+        //         city_subtree->this_el->latitude <= lat ||
+        //         city_subtree->this_el->longitude <= longe
+        //     )
+        // ) {
+        //     city_queue.push(city_subtree->ne);
+        // }
+        //
+        // //if sw exists and we need to go south or west
+        // if (city_subtree->sw && (
+        //         city_subtree->this_el->latitude >= lat ||
+        //         city_subtree->this_el->longitude >= longe
+        //     )
+        // ) {
+        //     city_queue.push(city_subtree->sw);
+        // }
+        //
+        // //if se exists and we need to go south or east
+        // if (city_subtree->se && (
+        //         city_subtree->this_el->latitude >= lat ||
+        //         city_subtree->this_el->longitude <= longe
+        //     )
+        // ) {
+        //     city_queue.push(city_subtree->se);
+        // }
+
         //if nw exists and is going back in the right direction
         if (city_subtree->nw && (
-                curr_distance > geo_to_mile(lat, longe, city_subtree->nw->this_el->latitude,
-                                            city_subtree->nw->this_el->longitude)
+                curr_distance >= geo_to_mile(lat, longe, city_subtree->nw->this_el->latitude,
+                                             city_subtree->nw->this_el->longitude)
             )
         ) {
-            city_queue.push(city_subtree->nw);
         }
 
         //if ne exists and is going back in the right direction
         if (city_subtree->ne && (
-                curr_distance > geo_to_mile(lat, longe, city_subtree->ne->this_el->latitude,
-                                            city_subtree->ne->this_el->longitude)
+                curr_distance >= geo_to_mile(lat, longe, city_subtree->ne->this_el->latitude,
+                                             city_subtree->ne->this_el->longitude)
             )
         ) {
             city_queue.push(city_subtree->ne);
@@ -254,8 +301,8 @@ void option3(quadtree *tree) {
 
         //if sw exists and is going back in the right direction
         if (city_subtree->sw && (
-                curr_distance > geo_to_mile(lat, longe, city_subtree->sw->this_el->latitude,
-                                            city_subtree->sw->this_el->longitude)
+                curr_distance >= geo_to_mile(lat, longe, city_subtree->sw->this_el->latitude,
+                                             city_subtree->sw->this_el->longitude)
             )
         ) {
             city_queue.push(city_subtree->sw);
@@ -263,8 +310,8 @@ void option3(quadtree *tree) {
 
         //if se exists and is going back in the right direction
         if (city_subtree->se && (
-                curr_distance > geo_to_mile(lat, longe, city_subtree->se->this_el->latitude,
-                                            city_subtree->se->this_el->longitude)
+                curr_distance >= geo_to_mile(lat, longe, city_subtree->se->this_el->latitude,
+                                             city_subtree->se->this_el->longitude)
             )
         ) {
             city_queue.push(city_subtree->se);

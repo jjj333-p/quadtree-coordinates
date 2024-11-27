@@ -11,7 +11,7 @@ void quadtree::insert(state *el) {
     assert(el != this_el);
     assert(el->latitude != this_el->latitude && el->longitude != this_el->longitude);
 
-    if (el->latitude < this_el->latitude) {
+    if (el->latitude > this_el->latitude) {
         //top half
         if (el->longitude < this_el->longitude) {
             // left upper quadrant
@@ -78,7 +78,7 @@ void quadtree::insert(state *el) {
 void quadtree::insert(quadtree *subtree) {
     assert(subtree != nullptr);
 
-    if (subtree->this_el->latitude < this_el->latitude) {
+    if (subtree->this_el->latitude > this_el->latitude) {
         //top half
         if (subtree->this_el->longitude < this_el->longitude) {
             // left upper quadrant
