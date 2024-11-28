@@ -24,7 +24,7 @@ void quadtree::insert(state *el) {
             } else {
                 //insert in middle of tree
                 quadtree *tmp_nw = nw;
-                nw = new quadtree(predecessor, el);
+                nw = new quadtree(this, el);
                 nw->insert(tmp_nw);
             }
         } else {
@@ -38,7 +38,7 @@ void quadtree::insert(state *el) {
             } else {
                 //insert in middle of tree
                 quadtree *tmp_ne = ne;
-                ne = new quadtree(predecessor, el);
+                ne = new quadtree(this, el);
                 ne->insert(tmp_ne);
             }
         }
@@ -55,7 +55,7 @@ void quadtree::insert(state *el) {
             } else {
                 //insert in middle of tree
                 quadtree *tmp_sw = sw;
-                sw = new quadtree(predecessor, el);
+                sw = new quadtree(this, el);
                 sw->insert(tmp_sw);
             }
         } else {
@@ -68,7 +68,7 @@ void quadtree::insert(state *el) {
             } else {
                 //insert in middle of tree
                 quadtree *tmp_se = se;
-                se = new quadtree(predecessor, el);
+                se = new quadtree(this, el);
                 se->insert(tmp_se);
             }
         }
