@@ -63,9 +63,6 @@ public:
     //insert a new element to the tree
     void insert(state *el);
 
-    //append a subtree onto the current tree
-    void insert(quadtree *subtree);
-
 private:
     // T *root;
 };
