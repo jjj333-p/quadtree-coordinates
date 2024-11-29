@@ -27,7 +27,7 @@ void quadtree::insert(state *el) {
             if (ne == nullptr) {
                 //new leaf
                 ne = new quadtree(this, el);
-            } else  {
+            } else {
                 //if the leaf is closer to the root than us, recursively call insert
                 ne->insert(el);
             }
@@ -39,7 +39,7 @@ void quadtree::insert(state *el) {
             if (sw == nullptr) {
                 // new leaf
                 sw = new quadtree(this, el);
-            } else  {
+            } else {
                 //if the leaf is closer to the root than us, recursively call insert
                 sw->insert(el);
             }

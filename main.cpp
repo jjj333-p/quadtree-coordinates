@@ -246,42 +246,6 @@ void option3(quadtree *tree) {
             continue;
         }
 
-        // //if nw exists, and we need to go north or west
-        // if (city_subtree->nw && (
-        //         city_subtree->this_el->latitude <= lat ||
-        //         city_subtree->this_el->longitude >= longe
-        //     )
-        // ) {
-        //     city_queue.push(city_subtree->nw);
-        // }
-        //
-        // //if ne exists, and we need to go north or east
-        // if (city_subtree->ne && (
-        //         city_subtree->this_el->latitude <= lat ||
-        //         city_subtree->this_el->longitude <= longe
-        //     )
-        // ) {
-        //     city_queue.push(city_subtree->ne);
-        // }
-        //
-        // //if sw exists and we need to go south or west
-        // if (city_subtree->sw && (
-        //         city_subtree->this_el->latitude >= lat ||
-        //         city_subtree->this_el->longitude >= longe
-        //     )
-        // ) {
-        //     city_queue.push(city_subtree->sw);
-        // }
-        //
-        // //if se exists and we need to go south or east
-        // if (city_subtree->se && (
-        //         city_subtree->this_el->latitude >= lat ||
-        //         city_subtree->this_el->longitude <= longe
-        //     )
-        // ) {
-        //     city_queue.push(city_subtree->se);
-        // }
-
         //if nw exists and is going back in the right direction
         if (city_subtree->nw && (
                 curr_distance >= geo_to_mile(lat, longe, city_subtree->nw->this_el->latitude,
