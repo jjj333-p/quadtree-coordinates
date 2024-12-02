@@ -31,10 +31,15 @@ void option3(quadtree *tree);
 void option4(quadtree *tree);
 
 int main() {
+    //get file to read from
+    std::string filename;
+    std::cout << "Enter filepath to read from: ";
+    std::cin >> filename;
+
     //open file
-    std::ifstream statesTXT("states.txt");
+    std::ifstream statesTXT(filename);
     if (!statesTXT.is_open()) {
-        std::cerr << "Could not open file states.txt" << std::endl;
+        std::cerr << "Could not open file " << filename << std::endl;
         statesTXT.close();
         return 1;
     }
