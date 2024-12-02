@@ -1,11 +1,19 @@
+/*
+ * Code by Joseph Winkie for CS321 on 12/02/2024
+ * Reads in a list of state capitals and coordinate points
+ * and allows computation of nearest cities to a geolocation
+ */
+
 #include <fstream>
 #include <iostream>
+#include <queue>
 #include <valarray>
 #include <vector>
 #include "state.h"
 #include "quadtree.h"
 // #include "genBST.h"
 
+//calculates the distance between coordinate points using the formula in assignment instructions
 float geo_to_mile(
     float lat1,
     float longe1,
@@ -13,10 +21,13 @@ float geo_to_mile(
     float longe2
 );
 
+//compute distance between two coordinate points
 void option2();
 
+//find the closest city to a coordinate point
 void option3(quadtree *tree);
 
+//insert new city and search for other cities within x miles
 void option4(quadtree *tree);
 
 int main() {
@@ -119,6 +130,7 @@ int main() {
     }
 }
 
+//calculates the distance between coordinate points using the formula in assignment instructions
 float geo_to_mile(
     const float lat1,
     const float longe1,
@@ -182,7 +194,7 @@ void option2() {
             << " miles.\n";
 }
 
-//find closest city to a coordinate point
+//find the closest city to a coordinate point
 void option3(quadtree *tree) {
     assert(tree); //can only operate on a nonnull value
 
@@ -294,7 +306,7 @@ void option3(quadtree *tree) {
             << " miles away.\n";
 }
 
-//insert new city
+//insert new city and search for other cities within x miles
 void option4(quadtree *tree) {
     std::cout << "Not implemented yet.\n";
 

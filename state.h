@@ -1,6 +1,8 @@
-//
-// Created by joseph on 11/20/24.
-//
+/*
+* Code by Joseph Winkie for CS321 on 12/02/2024
+* This file defines a datatype to hold information
+* about a given "state"
+*/
 
 #ifndef STATE_H
 #define STATE_H

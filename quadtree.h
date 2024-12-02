@@ -1,14 +1,15 @@
-//
-// Created by joseph on 11/20/24.
-//
+/*
+* Code by Joseph Winkie for CS321 on 12/02/2024
+* This is the implementation of a quadtree.
+* Each "node" is considered a subtree and contains all the
+* quadtree data and code for its subtree. It relies on the
+* state datatype to function as that holds the actual element
+* of the node.
+*/
 
 #ifndef QUADTREE_H
 #define QUADTREE_H
 #include <cassert>
-#include <queue>
-#include <stack>
-#include <string>
-#include <utility>
 #include "state.h"
 
 // template<class T>

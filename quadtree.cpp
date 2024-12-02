@@ -1,6 +1,8 @@
-//
-// Created by joseph on 11/20/24.
-//
+/*
+* Code by Joseph Winkie for CS321 on 12/02/2024
+* this file contains the recursive insert function
+* for inserting new elements into the quadtree
+*/
 
 #include "quadtree.h"
 
