@@ -9,7 +9,9 @@ void quadtree::insert(state *el) {
     //sanity checks
     assert(el != nullptr);
     assert(el != this_el);
-    assert(el->latitude != this_el->latitude && el->longitude != this_el->longitude);
+    if (el->latitude != this_el->latitude && el->longitude != this_el->longitude) {
+        throw std::runtime_error("quadtree::insert: latitude and longitude already exist");
+    }
 
     if (el->latitude > this_el->latitude) {
         //top half

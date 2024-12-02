@@ -17,7 +17,7 @@ void option2();
 
 void option3(quadtree *tree);
 
-void option4();
+void option4(quadtree *tree);
 
 int main() {
     //open file
@@ -109,7 +109,7 @@ int main() {
                 option3(tree);
                 break;
             case '4':
-                option4();
+                option4(tree);
                 break;
             default:
                 std::cout << "Invalid input `" << input << "`.\n";
@@ -143,10 +143,11 @@ float geo_to_mile(
         )
     );
 
-    assert(!(miles < 0)); //sanity check
+    assert(miles >= 0); //sanity check
     return miles;
 }
 
+//compute distance between two coordinate points
 void option2() {
     //read in values to compute
     std::cout << "Latitude 1: ";
@@ -181,6 +182,7 @@ void option2() {
             << " miles.\n";
 }
 
+//find closest city to a coordinate point
 void option3(quadtree *tree) {
     assert(tree); //can only operate on a nonnull value
 
@@ -292,8 +294,23 @@ void option3(quadtree *tree) {
             << " miles away.\n";
 }
 
-void option4() {
+//insert new city
+void option4(quadtree *tree) {
     std::cout << "Not implemented yet.\n";
+
+    assert(tree); //can only operate on a nonnull value
+
+    std::cout << "Latitude: ";
+    std::string lat_str;
+    std::cin >> lat_str;
+    std::cout << "Longitude: ";
+    std::string longe_str;
+    std::cin >> longe_str;
+    std::cout << "Name: ";
+    std::string name_str;
+    std::cin >> name_str;
+
+
 }
 
 
