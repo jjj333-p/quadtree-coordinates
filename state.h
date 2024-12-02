@@ -33,7 +33,7 @@ public:
 
     //pretty printing
     friend std::ostream &operator<<(std::ostream &os, const state &obj) {
-        os << obj.name << "is found on latitude " << obj.latitude << " and longitude " << obj.longitude << std::endl;
+        os << obj.name << "is found at (" << obj.latitude << ",  " << obj.longitude << ')';
 
         //??
         return os;
